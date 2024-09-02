@@ -1,0 +1,96 @@
+[33mcommit 9af89de78f8f4375bb510c25be6ec488de161040[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Author: Kalyan Reddy Daida <stacksimplify@gmail.com>
+Date:   Fri Dec 29 16:59:03 2023 +0530
+
+    Welcome to StackSimplify
+
+[1mdiff --git a/03-Terraform-Settings-Providers-Resources/terraform-manifests/app1-install.sh b/03-Terraform-Settings-Providers-Resources/terraform-manifests/app1-install.sh[m
+[1mindex f697dd1..a27fc32 100644[m
+[1m--- a/03-Terraform-Settings-Providers-Resources/terraform-manifests/app1-install.sh[m
+[1m+++ b/03-Terraform-Settings-Providers-Resources/terraform-manifests/app1-install.sh[m
+[36m@@ -7,6 +7,12 @@[m [msudo service httpd start[m
+ sudo echo '<h1>Welcome to StackSimplify - APP-1</h1>' | sudo tee /var/www/html/index.html[m
+ sudo mkdir /var/www/html/app1[m
+ sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 210);"> <h1>Welcome to Stack Simplify - APP-1</h1> <p>Terraform Demo</p> <p>Application Version: V1</p> </body></html>' | sudo tee /var/www/html/app1/index.html[m
+[31m-sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m#sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32mTOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`[m
+[32m+[m[32msudo curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m# AWS Documentation to retrieve EC2 Instance Data[m
+[32m+[m[32m# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html[m
+[41m+[m
+[41m+[m
+ [m
+ [m
+[1mdiff --git a/04-Terraform-Variables-and-Datasources/terraform-manifests/app1-install.sh b/04-Terraform-Variables-and-Datasources/terraform-manifests/app1-install.sh[m
+[1mindex f697dd1..a27fc32 100644[m
+[1m--- a/04-Terraform-Variables-and-Datasources/terraform-manifests/app1-install.sh[m
+[1m+++ b/04-Terraform-Variables-and-Datasources/terraform-manifests/app1-install.sh[m
+[36m@@ -7,6 +7,12 @@[m [msudo service httpd start[m
+ sudo echo '<h1>Welcome to StackSimplify - APP-1</h1>' | sudo tee /var/www/html/index.html[m
+ sudo mkdir /var/www/html/app1[m
+ sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 210);"> <h1>Welcome to Stack Simplify - APP-1</h1> <p>Terraform Demo</p> <p>Application Version: V1</p> </body></html>' | sudo tee /var/www/html/app1/index.html[m
+[31m-sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m#sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32mTOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`[m
+[32m+[m[32msudo curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m# AWS Documentation to retrieve EC2 Instance Data[m
+[32m+[m[32m# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html[m
+[41m+[m
+[41m+[m
+ [m
+ [m
+[1mdiff --git a/05-Terraform-Loops-MetaArguments-SplatOperator/05-01-MetaArgument-Count-For-Loops-Lists-Maps/terraform-manifests/app1-install.sh b/05-Terraform-Loops-MetaArguments-SplatOperator/05-01-MetaArgument-Count-For-Loops-Lists-Maps/terraform-manifests/app1-install.sh[m
+[1mindex f697dd1..a27fc32 100644[m
+[1m--- a/05-Terraform-Loops-MetaArguments-SplatOperator/05-01-MetaArgument-Count-For-Loops-Lists-Maps/terraform-manifests/app1-install.sh[m
+[1m+++ b/05-Terraform-Loops-MetaArguments-SplatOperator/05-01-MetaArgument-Count-For-Loops-Lists-Maps/terraform-manifests/app1-install.sh[m
+[36m@@ -7,6 +7,12 @@[m [msudo service httpd start[m
+ sudo echo '<h1>Welcome to StackSimplify - APP-1</h1>' | sudo tee /var/www/html/index.html[m
+ sudo mkdir /var/www/html/app1[m
+ sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 210);"> <h1>Welcome to Stack Simplify - APP-1</h1> <p>Terraform Demo</p> <p>Application Version: V1</p> </body></html>' | sudo tee /var/www/html/app1/index.html[m
+[31m-sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m#sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32mTOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`[m
+[32m+[m[32msudo curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m# AWS Documentation to retrieve EC2 Instance Data[m
+[32m+[m[32m# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html[m
+[41m+[m
+[41m+[m
+ [m
+ [m
+[1mdiff --git a/05-Terraform-Loops-MetaArguments-SplatOperator/05-02-MetaArgument-for_each/terraform-manifests/app1-install.sh b/05-Terraform-Loops-MetaArguments-SplatOperator/05-02-MetaArgument-for_each/terraform-manifests/app1-install.sh[m
+[1mindex f697dd1..a27fc32 100644[m
+[1m--- a/05-Terraform-Loops-MetaArguments-SplatOperator/05-02-MetaArgument-for_each/terraform-manifests/app1-install.sh[m
+[1m+++ b/05-Terraform-Loops-MetaArguments-SplatOperator/05-02-MetaArgument-for_each/terraform-manifests/app1-install.sh[m
+[36m@@ -7,6 +7,12 @@[m [msudo service httpd start[m
+ sudo echo '<h1>Welcome to StackSimplify - APP-1</h1>' | sudo tee /var/www/html/index.html[m
+ sudo mkdir /var/www/html/app1[m
+ sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 210);"> <h1>Welcome to Stack Simplify - APP-1</h1> <p>Terraform Demo</p> <p>Application Version: V1</p> </body></html>' | sudo tee /var/www/html/app1/index.html[m
+[31m-sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m#sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32mTOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`[m
+[32m+[m[32msudo curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m# AWS Documentation to retrieve EC2 Instance Data[m
+[32m+[m[32m# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html[m
+[41m+[m
+[41m+[m
+ [m
+ [m
+[1mdiff --git a/05-Terraform-Loops-MetaArguments-SplatOperator/05-04-for_each-with-az-instancetype-check/terraform-manifests/app1-install.sh b/05-Terraform-Loops-MetaArguments-SplatOperator/05-04-for_each-with-az-instancetype-check/terraform-manifests/app1-install.sh[m
+[1mindex f697dd1..a27fc32 100644[m
+[1m--- a/05-Terraform-Loops-MetaArguments-SplatOperator/05-04-for_each-with-az-instancetype-check/terraform-manifests/app1-install.sh[m
+[1m+++ b/05-Terraform-Loops-MetaArguments-SplatOperator/05-04-for_each-with-az-instancetype-check/terraform-manifests/app1-install.sh[m
+[36m@@ -7,6 +7,12 @@[m [msudo service httpd start[m
+ sudo echo '<h1>Welcome to StackSimplify - APP-1</h1>' | sudo tee /var/www/html/index.html[m
+ sudo mkdir /var/www/html/app1[m
+ sudo echo '<!DOCTYPE html> <html> <body style="background-color:rgb(250, 210, 210);"> <h1>Welcome to Stack Simplify - APP-1</h1> <p>Terraform Demo</p> <p>Application Version: V1</p> </body></html>' | sudo tee /var/www/html/app1/index.html[m
+[31m-sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m#sudo curl http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32mTOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`[m
+[32m+[m[32msudo curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/dynamic/instance-identity/document -o /var/www/html/app1/metadata.html[m
+[32m+[m[32m# AWS Documentation to retrieve EC2 Instance Data[m
+[32m+[m[32m# https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/instancedata-data-retrieval.html[m
+[41m+[m
+[41m+[m
+ [m
+ [m
