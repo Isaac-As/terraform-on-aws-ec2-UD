@@ -2,7 +2,7 @@
 module "elb" {
   source  = "terraform-aws-modules/elb/aws"
   #version = "2.5.0"
-  version = "4.0.1"
+  version = "4.0.2"
   name = "${local.name}-myelb"
   subnets         = [
     module.vpc.public_subnets[0],

@@ -6,14 +6,15 @@ FUTURE-TOPICS
 .DS_Store
 
 # Ignore .sh files
-#*.sh
+*.sh
 
 # Terraform Files and Folders
 .terraform
 *.tfstate
 *.tfstate.backup
-#.terraform.lock.hcl
-#*.tfvars
+.terraform.lock.hcl
+*.tfvars
 
 # Ignore .pem files
-#*.pem
+*.pem
+private-key
